@@ -17,8 +17,10 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import IndexComponent from './components/Index.vue';
+import NavComponent from './components/navbar.vue';
 app.component('example-component', ExampleComponent);
 app.component('index-component', IndexComponent);
+app.component('nav-component', NavComponent);
 
 /**
  * The following block of code may be used to automatically register your
