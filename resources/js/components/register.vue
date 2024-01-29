@@ -23,8 +23,8 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="password_confirm">Confirm Password</label>
-                                    <input type="password" v-model="confirm_password" id="confirm_password" class="form-control mt-2" placeholder="Confirm Password" required>
+                                    <label for="password_confirmation">Confirm Password</label>
+                                    <input type="password" v-model="password_confirmation" id="password_confirmation" class="form-control mt-2" placeholder="Confirm Password" required>
                                 </div>
 
                                 <div class="form-group">
@@ -52,7 +52,7 @@ import axios from 'axios';
                 name:'',
                 email:'',
                 password:'',
-                confirm_password:'',
+                password_confirmation:'',
             }
         },
         methods:{
@@ -61,9 +61,9 @@ import axios from 'axios';
                     name:this.name,
                     email:this.email,
                     password:this.password,
-                    confirm_password:this.confirm_password,
-                }).then((response)=>{
-                    console.log(response,'response')
+                    password_confirmation:this.password_confirmation,
+                }).then((res)=>{
+                    console.log(res,'response')
                 }).catch((error)=>{
                     console.log('error')
                 })
