@@ -4,7 +4,7 @@
 
 Here is the time period I worked in this project.
 
-- [image-1](screenshot/1.png).
+- ![image-1](screenshot/1.png).
 - [image-2](screenshot/2.png).
 - [image-3](screenshot/3.png).
 - [image-4](screenshot/4.png).
