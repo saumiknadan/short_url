@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UrlShortner;
 
 class UrlShortnerController extends Controller
 {
@@ -15,7 +16,7 @@ class UrlShortnerController extends Controller
         ]);
 
         if($newUrl){
-            $shortUrl = base_convert($newUrl->id+1000000,10,36);
+            $shortUrl = base_convert($newUrl->id+100000000,10,36);
 
             $newUrl->update(['short_url'=>$shortUrl]);
 
