@@ -20,6 +20,10 @@
                                     <button class="btn btn-success" @click.prevent="userlogin">Login</button>
                                 </div>
                             </form>
+
+                        <div v-if="errorMessage" class="alert alert-danger mt-3">
+                            {{ errorMessage }}
+                        </div>
                     
                         </div>
                 </div>
@@ -40,7 +44,8 @@ import axios from 'axios';
         data(){
             return{
                 email:'',
-                password:''
+                password:'',
+                errormessage:''
             }
         },
 
@@ -53,7 +58,7 @@ import axios from 'axios';
                     // console.log(respons,'respons')
                     location.href = '/home'
                 }).catch((error)=>{
-                    console.log('error')
+                    this.errormessage='Invalid userID or password. Please try again'
                 })
             }
         }
