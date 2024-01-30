@@ -11,6 +11,8 @@ class UrlShortnerController extends Controller
     {
         $originalUrl = $request->original_url;
 
+        
+        
         $newUrl = UrlShortner::create([
             'original_url' => $originalUrl,
         ]);
@@ -23,7 +25,7 @@ class UrlShortnerController extends Controller
             return response()->json([
                 'success'=>true,
                 'message'=>'Short Url Created Successfully',
-                'date' =>[
+                'data' =>[
                     'original_url'=>$originalUrl,
                     'short_url'=>url($shortUrl),
                 ],
@@ -34,5 +36,13 @@ class UrlShortnerController extends Controller
             'message' => 'Failed to create short URL',
             'data' => null,
         ]);
+    }
+
+    public function show($id)
+    {
+        $short_url = UrlShortner::where('short_url', $id)->first();
+        if ($short_url) {
+        return redirect()->to(url($short_url->original_url));
+        }
     }
 }

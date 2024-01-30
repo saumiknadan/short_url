@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header"><h3>Login Your Account</h3></div>
                         <div class="card-body">
-                            <form action="">
+                            <form @submit.prevent="userlogin">
                                 <div class="form-group mb-3">
                                     <label for="email">Email</label>
                                     <input type="email" id="email" v-model="email" class="form-control mt-2" placeholder="Enter Your EMail" required>
@@ -18,7 +18,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <button class="btn btn-success" @click.prevent="userlogin">Login</button>
+                                    <button class="btn btn-success">Login</button>
                                 </div>                                
                             </form>
                         
