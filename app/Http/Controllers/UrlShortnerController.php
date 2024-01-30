@@ -11,11 +11,21 @@ class UrlShortnerController extends Controller
     {
         $originalUrl = $request->original_url;
 
+        if (auth()->user()) {
+            $newUrl = auth()->user()->links()->create([
+                'original_url'=>$request->original_url,
+            ]);
+        } else {
+            $newUrl = UrlShortner::create([
+                'original_url'=>$request->original_url, 
+            ]);
+        }
         
+    
         
-        $newUrl = UrlShortner::create([
-            'original_url' => $originalUrl,
-        ]);
+        // $newUrl = UrlShortner::create([
+        //     'original_url' => $originalUrl,
+        // ]);
 
         if($newUrl){
             $shortUrl = base_convert($newUrl->id+100000000,10,36);

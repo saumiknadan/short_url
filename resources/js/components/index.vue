@@ -24,6 +24,10 @@
                                         </div>
                                     </div>
 
+                                    <div v-if="bad_error.statusText" class="alert alert-danger mt-3">
+                                        <p> {{ bad_error.statusText }} Please try again after a minute.</p>
+                                    </div>
+
                                                             
                             </form>
                                 
@@ -47,7 +51,8 @@ import axios from 'axios';
             return{
                 original_url: null,
                 error:null,
-                shortlink: {}
+                shortlink: {},
+                bad_error: {}
             };
         },
 
@@ -59,10 +64,12 @@ import axios from 'axios';
                             original_url:this.original_url
                         }).then((res)=>{
                             this.shortlink = res.data.data
-                            console.log(res.data)
+                            console.log('na re na re:', res.data.data)
                             this.error = null
                         }).catch((error) => {
-                        console.error('Error:', error); 
+                        console.log('Error:', error.response); 
+                        // console.log('Error:', error.response.statusText); 
+                        this.bad_error = error.response
                         this.error = 'An error occurred. Please try again later.';
                     });
                 }else{
