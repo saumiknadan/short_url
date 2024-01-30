@@ -18,14 +18,14 @@
 
                                 <div class="form-group">
                                     <button class="btn btn-success" @click.prevent="userlogin">Login</button>
-                                </div>
+                                </div>                                
                             </form>
-
-                        <div v-if="errorMessage" class="alert alert-danger mt-3">
-                            {{ errorMessage }}
+                            <div v-if="error" class="alert alert-danger mt-3">
+                            {{ error }}
+                        </div>vvv
+                            
                         </div>
-                    
-                        </div>
+                        
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ import axios from 'axios';
             return{
                 email:'',
                 password:'',
-                errormessage:''
+                error: null,
             }
         },
 
@@ -55,11 +55,16 @@ import axios from 'axios';
                     email: this.email,
                     password: this.password
                 }).then((respons)=>{
-                    // console.log(respons,'respons')
+                    console.log(respons,'respons')
                     location.href = '/home'
                 }).catch((error)=>{
-                    this.errormessage='Invalid userID or password. Please try again'
-                })
+                    console.log('error')
+                    if (error.response && error.response.status === 401) {
+                    this.error = 'An error occurred. Please try again later.';
+                } else {
+                    this.error = 'These credentials do not match our records.';
+                }
+                });
             }
         }
     }
