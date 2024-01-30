@@ -59,7 +59,7 @@ import axios from 'axios';
                     password: this.password
                 }).then((respons)=>{
                     console.log(respons,'respons')
-                    location.href = '/home'
+                    location.href = '/'
                 }).catch((error)=>{
                     console.log('error')
                     if (error.response && error.response.status === 401) {

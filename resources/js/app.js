@@ -20,6 +20,7 @@ import IndexComponent from './components/Index.vue';
 import NavComponent from './components/navbar.vue';
 import LoginComponent from './components/login.vue';
 import RegisterComponent from './components/register.vue';
+import ShortComponent from './components/short_url.vue';
 
 
 app.component('example-component', ExampleComponent);
@@ -27,6 +28,7 @@ app.component('index-component', IndexComponent);
 app.component('nav-component', NavComponent);
 app.component('login-component', LoginComponent);
 app.component('register-component', RegisterComponent);
+app.component('short_url-component', ShortComponent);
 
 /**
  * The following block of code may be used to automatically register your
