@@ -8,16 +8,16 @@
                             <form action="">
                                 <div class="form-group mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" id="email" class="form-control mt-2" placeholder="Enter Your EMail" required>
+                                    <input type="email" id="email" v-model="email" class="form-control mt-2" placeholder="Enter Your EMail" required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="password">Password</label>
-                                    <input type="password" id="password" class="form-control mt-2" placeholder="Enter Your Password" required>
+                                    <input type="password" id="password" v-model="password" class="form-control mt-2" placeholder="Enter Your Password" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <button class="btn btn-success">Login</button>
+                                    <button class="btn btn-success" @click.prevent="userlogin">Login</button>
                                 </div>
                             </form>
                     
@@ -29,9 +29,33 @@
 </template>
 
 <script>
+import axios from 'axios';
+
     export default {
+        name: 'Login',
         mounted() {
             console.log('Component mounted.')
+        },
+
+        data(){
+            return{
+                email:'',
+                password:''
+            }
+        },
+
+        methods: {
+            userlogin(){
+                axios.post('/login',{
+                    email: this.email,
+                    password: this.password
+                }).then((respons)=>{
+                    // console.log(respons,'respons')
+                    location.href = '/home'
+                }).catch((error)=>{
+                    console.log('error')
+                })
+            }
         }
     }
 </script>

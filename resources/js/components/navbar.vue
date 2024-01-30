@@ -31,18 +31,16 @@
                             <a class="nav-link" href="/register">Register</a>
                         </li>
                   
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            User Name
+                    <li v-if="user !== 'null'" class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                            {{ user.name }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="">
+                            <a class="dropdown-item" href="" @click="logout">
                                 Logout
                             </a>
-
-                            
-                        </div>
+                         </div>
                     </li>
             </ul>
         </div>
@@ -54,9 +52,22 @@
 </template>
 
 <script>
+import axios from 'axios';
+
     export default {
+        name: 'navbar',
+
+        props:['user'],
+
         mounted() {
-            console.log('Component mounted.')
+            console.log(this.user.name,'user Component mounted.')
+        },
+        methods: {
+            logout(){
+                axios.post('/logout', {}).then((response)=>{
+                    location.href='/'
+                })
+            }
         }
     }
 </script>

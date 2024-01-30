@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <nav-component></nav-component>
+        <nav-component @guest user='null' @else :user="{{ Auth::user() }}" @endguest></nav-component>
 
         <main class="py-4">
             @yield('content')
