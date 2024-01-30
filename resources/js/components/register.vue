@@ -30,6 +30,10 @@
                                 <div class="form-group">
                                     <button class="btn btn-success" @click.prevent="submitReg">Register</button>
                                 </div>
+                                <!-- Success message -->
+                            <div v-if="successMessage" class="alert alert-success mt-3">
+                                {{ successMessage }} <a class="nav-link" href="/login"><u>Click Here</u></a> to visit your account.
+                            </div>
                             </form>
                     
                         </div>
@@ -53,6 +57,7 @@ import axios from 'axios';
                 email:'',
                 password:'',
                 password_confirmation:'',
+                successMessage: '',
             }
         },
         methods:{
@@ -63,7 +68,8 @@ import axios from 'axios';
                     password:this.password,
                     password_confirmation:this.password_confirmation,
                 }).then((res)=>{
-                    console.log(res,'response')
+                    console.log(res,'response');
+                    this.successMessage = 'Account created successfully.';
                 }).catch((error)=>{
                     console.log('error')
                 })

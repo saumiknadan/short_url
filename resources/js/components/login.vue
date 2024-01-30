@@ -9,6 +9,7 @@
                                 <div class="form-group mb-3">
                                     <label for="email">Email</label>
                                     <input type="email" id="email" v-model="email" class="form-control mt-2" placeholder="Enter Your EMail" required>
+                                    
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -20,9 +21,11 @@
                                     <button class="btn btn-success" @click.prevent="userlogin">Login</button>
                                 </div>                                
                             </form>
+                        
+                        <!-- error message -->
                             <div v-if="error" class="alert alert-danger mt-3">
-                            {{ error }}
-                        </div>vvv
+                                {{ error }}
+                            </div>
                             
                         </div>
                         
