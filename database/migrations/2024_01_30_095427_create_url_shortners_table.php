@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('url_shortners', function (Blueprint $table) {
             $table->id();
+            $table->foreignID('user_id')->nullable()->constrained();
+            $table->text('original_url');
+            $table->string('short_url');
+            $table->string('visits')->default(0);
             $table->timestamps();
         });
     }
