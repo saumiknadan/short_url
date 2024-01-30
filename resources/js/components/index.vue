@@ -26,9 +26,39 @@
 </template>
 
 <script>
+import axios from 'axios';
+
     export default {
         mounted() {
             console.log('Component mounted.')
+        },
+        name: "Url Shortner",
+
+        data(){
+            return{
+                original_url: null,
+                error:null,
+                shortlink: {}
+            };
+        },
+
+        methods: {
+            shortUrl()
+            {
+                if(this.original_url){
+                        axios.post('/short',{
+                            original_url:this.original_url
+                        }).then((response)=>{
+                            this.shortlink = response.data.data
+                            console.log(response.data)
+                            this.error = null
+                        }).catch((error)=>{
+                        console.log(error)
+                    })
+                }else{
+                    this.error = 'This Field is required';
+                }
+            }
         }
     }
 </script>
